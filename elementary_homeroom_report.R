@@ -95,7 +95,7 @@ student_snapshot <- sqlQuery(
 odbcClose(panda_homeroom)
 
 # Import the homeroom class size limits alongside the structure data 
-panda <- odbcConnectAccess2007('data/mega files/Planning & Analysis.accdb')
+panda <- odbcConnectAccess2007('G:/Shared drives/Planning and Analysis/1 - operations management/data/mega files/Planning & Analysis.accdb')
 
 structure <- sqlQuery(
   panda,
@@ -138,7 +138,7 @@ hr_crosswalk <- left_join(homeroom_crosswalk, structure, by = c("sch_year", "cla
 
 # Programcode and Descriptions per program 
 supTabProgramcodes <- read.csv(
-  'data/master decodes/program codes/program codes for enrollment megafile.csv'
+  'G:/Shared drives/Planning and Analysis/1 - operations management/data/master decodes/program codes/program codes for enrollment megafile.csv'
 ) 
 
 # Create a crosswalk between homeroom type and projection_group so that we can 
@@ -181,7 +181,7 @@ supTabCTToPG <- supTabProgramcodes %>%
 
 # Import classroom size limits
 supTabLimits <-
-  read.csv('data/master decodes/classroom limits/current year classroom limits.csv') %>%
+  read.csv('G:/Shared drives/Planning and Analysis/1 - operations management/data/master decodes/classroom limits/current year classroom limits.csv') %>%
   
   # Merge in the pgrm variable
   
