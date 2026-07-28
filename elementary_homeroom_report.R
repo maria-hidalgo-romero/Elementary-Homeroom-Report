@@ -216,7 +216,7 @@ supTabLimits <-
 
 # Special Inclusion ratios for the current year, maintained on the G Drive 
 supTabInclusionRatios <- read.csv(
-  'data/master decodes/inclusion ratios/nonstandard inclusion ratios current year.csv'
+  'G:/Shared drives/Planning and Analysis/1 - operations management/data/master decodes/inclusion ratios/nonstandard inclusion ratios current year.csv'
 )
 
 # Clean Enrollment Data ---------------------------------------------------
@@ -1002,7 +1002,6 @@ hrSummary <- hrSummary_district %>%
 # drive.
 
 gs4_auth()
-
 hrSS <- '1LPawUAurBJttP6FWvU9FQkc1BkHrK0GqtLP7uxZcCSA'
 
 write_sheet(
