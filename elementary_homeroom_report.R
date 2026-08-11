@@ -17,8 +17,6 @@ library(googlesheets4)
 library(RODBC)
 
 today_date <- as.character(Sys.Date())
-today_date <- "2026-06-22"
-
 month <- month(Sys.Date())
 
 if (month < 7){
