@@ -15,6 +15,7 @@ library(tidyverse)
 library(googledrive)
 library(googlesheets4)
 library(RODBC)
+library(readr)
 
 today_date <- as.character(Sys.Date())
 month <- month(Sys.Date())
@@ -1002,7 +1003,7 @@ hrSummary <- hrSummary_district %>%
 # drive.
 
 gs4_auth()
-hrSS <- '1LPawUAurBJttP6FWvU9FQkc1BkHrK0GqtLP7uxZcCSA'
+hrSS <- '1T5K0KQJJ2W9nkVofl5VcQwU0fxmiLaYlqbyfhL053SE'
 
 write_sheet(
   allStudentsWriteFile,
@@ -1028,7 +1029,7 @@ write_sheet(
   sheet = "OSS Data"
 )
 
-write.csv(
+write_excel_csv(
   hrSummary_district, 
   sprintf(
     "G:/Shared drives/Planning and Analysis/1 - operations management/standalone tools/homeroom report/output/Homeroom Report - %s", 
@@ -1074,7 +1075,7 @@ folder_id <- "https://drive.google.com/drive/folders/0B57hJdy8FCR1VmNXbTNVQ2xLVn
 directory <- drive_ls(folder_id)
 
 # pull in school names and add school codes to the directory 
-panda <- odbcConnectAccess2007('data/mega files/Planning & Analysis.accdb')
+panda <- odbcConnectAccess2007('G:/Shared drives/Planning and Analysis/1 - operations management/data/mega files/Planning & Analysis.accdb')
 names <- sqlQuery(panda, 'SELECT* FROM school_names')
 
 directory$new_schname <- substring(directory$name, 33, 70)
@@ -1098,9 +1099,9 @@ for(sch in sch_list){
   
   subsubfolder_directory <- drive_ls(subfolder_id)
   
-  subsubfolder_id <- subsubfolder_directory$id[subsubfolder_directory$name == "School Year 25-26 Reports ARCHIVE"]
+  subsubfolder_id <- subsubfolder_directory$id[subsubfolder_directory$name == "School Year 26-27 Reports"]
   
-  report_name <- paste0(sch, " - SY2526 Homeroom Report")
+  report_name <- paste0(sch, " - SY2627 Homeroom Report")
   
   ss <- gs4_create(
     report_name, 
